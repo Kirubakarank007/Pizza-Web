@@ -16,12 +16,12 @@ jobs:
       uses: docker/login-action@v2
       with:
         username: kirubakaran007
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        password: Kiruba@123
 
     - name: Build and Push
       uses: docker/build-push-action@v4
       with:
         context: .  # This points to the root of your repository
-        file: ./Dockerfile  # Adjust this to the correct location of your Dockerfile
+        file: ./Docker  # Adjust this to the correct location of your Dockerfile
         push: true
         tags: kirubakaran007/pizza-web:latest
