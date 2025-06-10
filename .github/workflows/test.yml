@@ -14,7 +14,8 @@ jobs:
            echo "name is ${{vars.USERNAME}}"
            echo "password is ${{secrets.PASSWORD}}"
            echo "name is ${{vars.USERNAME}}" | base64 
-           echo ${{secrets.Password}} | base64 --decode
+           DECODED=$(echo ${{secrets.Password}} | base64 --decode)
+           echo "decode password is ${DECODED}"
            echo "::remove-mask::${{ secrets.PASSWORD }}"
            echo "password is ${{secrets.PASSWORD}}"
 
