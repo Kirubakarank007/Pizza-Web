@@ -11,6 +11,6 @@ jobs:
       
     steps:
      - name: Display the env name
-       run: echo "name is $platform" 
+       run: echo "name is $plateform" 
 
     
