@@ -13,8 +13,8 @@ jobs:
        run: | 
            echo "name is ${{vars.USERNAME}}"
            echo "password is ${{secrets.PASSWORD}}"
-           echo "name is ${{vars.USERNAME}} | base64  "
-           echo ${{secrets.Password}} | base64
+           echo "name is ${{vars.USERNAME}}" | base64 
+           echo ${{secrets.Password}} | base64 --decode
            echo "::remove-mask::${{ secrets.PASSWORD }}"
            echo "password is ${{secrets.PASSWORD}}"
 
