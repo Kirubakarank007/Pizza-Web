@@ -6,11 +6,12 @@ on:
 jobs:
   display:
     runs-on: ubuntu-latest
-    env:
-      plateform: PPE
+    environment: PPE
       
     steps:
      - name: Display the env name
-       run: echo "name is $plateform" 
+       run: | 
+           echo "name is $USERNAME"
+           echo "password is $PASSWORD"
 
     
