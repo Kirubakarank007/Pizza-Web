@@ -1,0 +1,16 @@
+name: Test -CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  display:
+    runs-on: ubuntu-latest
+    env:
+      plateform: PPE
+      
+    steps:
+     - name: Display the env name
+       run: echo "name is $platform" 
+
+    
