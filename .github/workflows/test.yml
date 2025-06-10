@@ -11,7 +11,7 @@ jobs:
     steps:
      - name: Display the env name
        run: | 
-           echo "name is $USERNAME"
-           echo "password is $PASSWORD"
+           echo "name is ${{secrets.USERNAME}}"
+           echo "password is ${{vars.PASSWORD}}"
 
     
