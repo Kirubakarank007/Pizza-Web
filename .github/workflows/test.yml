@@ -16,7 +16,7 @@ jobs:
            echo "${{vars.USERNAME}}" | base64 
            echo "password is ${{secrets.PASSWORD}}"
            echo "${{secrets.PASSWORD}}" | base64
-           DECODED=$(echo ${{secrets.Password}} | base64 --decode)
+           DECODED=$(echo "${{ secrets.PASSWORD }}" | base64 --decode)
            echo "decode password is ${DECODED}"
 
 
