@@ -15,7 +15,6 @@ jobs:
           echo "password is ${{ secrets.PASSWORD }}"
           echo "${{ vars.USERNAME }}" | base64 
           echo "password is ${{ secrets.PASSWORD }}"
-          echo "${{ secrets.PASSWORD }}" | base64 -e
 
       - name: Get current date and time
         run: |
