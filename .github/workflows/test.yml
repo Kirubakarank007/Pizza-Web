@@ -9,15 +9,17 @@ jobs:
     environment: PPE
       
     steps:
-     - name: Display the env name
-       run: | 
-           echo "name is ${{vars.USERNAME}}"
-           echo "password is ${{secrets.PASSWORD}}"
-           echo "${{vars.USERNAME}}" | base64 
-           echo "password is ${{secrets.PASSWORD}}"
-           echo "${{secrets.PASSWORD}}" | base64 -e
-           DECODED=$(echo "${{ secrets.PASSWORD }}" | base64 --decode)
-           echo "decode password is ${DECODED}"
+      - name: Display the env name
+        run: | 
+          echo "name is ${{ vars.USERNAME }}"
+          echo "password is ${{ secrets.PASSWORD }}"
+          echo "${{ vars.USERNAME }}" | base64 
+          echo "password is ${{ secrets.PASSWORD }}"
+          echo "${{ secrets.PASSWORD }}" | base64 -e
 
+      - name: Get current date and time
+        run: |
+          echo "CURRENT_DATE=$(date '+%Y-%m-%d_%H-%M-%S')" >> $GITHUB_ENV
 
-    
+      - name: Show the date
+        run: echo "The current date and time is $CURRENT_DATE"
