@@ -18,7 +18,8 @@ jobs:
 
       - name: Get current date and time
         run: |
-          echo "CURRENT_DATE=$(date '+%Y-%m-%d_%H-%M-%S')" >> $GITHUB_ENV
+          IST_DATE=$(TZ=Asia/Kolkata date '+%Y-%m-%d_%H-%M-%S')
+          echo "CURRENT_DATE=$IST_DATE" >> $GITHUB_ENV
 
       - name: Show the date
         run: echo "The current date and time is $CURRENT_DATE"
