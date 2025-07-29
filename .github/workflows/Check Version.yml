@@ -10,8 +10,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Show properties file (debug)
+        run: cat application.properties
+
       - name: Read version from application.properties
         run: |
-          VERSION=$(grep '^app-version=' application.properties | cut -d'=' -f2)
-          echo " V is $VERSION"
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+         VERSION=$(grep '^api-version=' application.properties | cut -d'=' -f2)
+         echo "V is $VERSION"
+         echo "VERSION=$VERSION" >> $GITHUB_ENV
+         
+      - run: echo "Version from file is ${{ env.VERSION }}"
+
