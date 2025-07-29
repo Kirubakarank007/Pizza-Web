@@ -16,8 +16,11 @@ jobs:
       - name: Read version from application.properties
         run: |
          VERSION=$(grep '^api-version=' application.properties | cut -d'=' -f2)
+         APP_NAME=$(grep '^app.name=' application.properties | cut -d'=' -f2)
          echo "V is $VERSION"
          echo "VERSION=$VERSION" >> $GITHUB_ENV
+         echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
          
       - run: echo "Version from file is ${{ env.VERSION }}"
+      - run: echo "Version from file is ${{ env.APP_NAME }}"
 
