@@ -33,9 +33,9 @@ jobs:
           DATE=$(date +'%Y%m%d')
           COMMIT_ID=$(git rev-parse --short HEAD)
           ENV_NAME=dev   # or use ${{ vars.ENV_NAME }}
-          IMAGE_TAG="${ENV_NAME}-${DATE}-${COMMIT_ID}"
+          IMAGE_TAG="${DATE}-${COMMIT_ID}-${ENV_NAME}"
           echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
-          echo "$IMAGE_TAG" > docker_image_tag.txt
+          echo "The latest build is $IMAGE_TAG" > docker_image_tag.txt
           echo "Tag name is $IMAGE_TAG" 
      - name: Commit tag file back to repo
        run: |
