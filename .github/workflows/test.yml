@@ -13,4 +13,15 @@ jobs:
      - name: Display the env name
        run: echo "name is $platform" 
 
+     - name: Set image tag with date and commit
+       id: vars
+       run: |
+        DATE=$(date +'%Y%m%d')
+        COMMIT_ID=$(git rev-parse --short HEAD)
+        ENV_NAME=dev   # or fetch from your inputs or vars
+        IMAGE_TAG="${ENV_NAME}-${DATE}-${COMMIT_ID}"
+        echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+        echo "$IMAGE_TAG" > docker_image_tag.txt
+
+
     
