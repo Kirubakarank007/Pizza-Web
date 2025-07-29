@@ -9,17 +9,28 @@ jobs:
     environment: PPE
       
     steps:
-      - name: Display the env name
-        run: | 
+     - name: Checkout repository
+       uses: actions/checkout@v4
+     - name: Display the env name
+       run: | 
           echo "name is ${{ vars.USERNAME }}"
           echo "password is ${{ secrets.PASSWORD }}"
           echo "${{ vars.USERNAME }}" | base64 
           echo "password is ${{ secrets.PASSWORD }}"
 
-      - name: Get current date and time
-        run: |
+     - name: Get current date and time
+       run: |
           IST_DATE=$(TZ=Asia/Kolkata date '+%Y-%m-%d_%H-%M-%S')
           echo "CURRENT_DATE=$IST_DATE" >> $GITHUB_ENV
 
-      - name: Show the date
-        run: echo "The current date and time is $CURRENT_DATE"
+     - name: Show the date
+       run: echo "The current date and time is $CURRENT_DATE"
+     - name: Set image tag with date and commit
+       id: vars
+       run: |
+          DATE=$(date +'%Y%m%d')
+          COMMIT_ID=$(git rev-parse --short HEAD)
+          ENV_NAME=dev   # or use ${{ vars.ENV_NAME }}
+          IMAGE_TAG="${ENV_NAME}-${DATE}-${COMMIT_ID}"
+          echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+          echo "$IMAGE_TAG" > docker_image_tag.txt
